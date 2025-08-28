@@ -15,6 +15,13 @@
 Entonces el sueldo de Baigorria es 12000, y el fondo de Galván tiene 268000 pesos.
 */
 
+/*
+## Qué hacen los empleados con lo que cobran
+
+- Baigorria cuando cobra el sueldo lo suma a un acumulador de todo lo que cobró, agregarle la capacidad de entender el mensaje `totalCobrado()`.
+  > empBaigorria.totalCobrado()
+*/
+
 object gimenez {
   var fondoSueldos = 300000
   method pagarSueldo(empleado) {
@@ -33,13 +40,18 @@ object empGalvan {
 }
 
 object empBaigorria {
-  var sueldo = 0
   var empanadas = 0
+  var cobrado = 0
 
   method ventaEmpanadas(cantidad) {
     empanadas = empanadas + cantidad
-    sueldo= sueldo + (cantidad * 15)
+  }
+  method cobrarSueldo() {
+    const sueldo = empanadas * 15
+    cobrado = cobrado + sueldo
+    empanadas = 0
+    return sueldo
   }
 
-  method cobrarSueldo() = sueldo
+  method totalCobrado() = cobrado 
 }
